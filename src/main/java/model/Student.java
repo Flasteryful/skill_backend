@@ -1,4 +1,4 @@
-import java.util.Objects;
+package model;
 
 public class Student {
     private String fullName;
@@ -31,23 +31,23 @@ public class Student {
         return currentCourseNumber;
     }
 
-    public Student setCurrentCourseNumber(int currentCourseNumber) {
+    public int setCurrentCourseNumber(int currentCourseNumber) {
         this.currentCourseNumber = currentCourseNumber;
-        return this;
+        return currentCourseNumber;
     }
 
     public float avgExamScore() {
         return avgExamScore;
     }
 
-    public Student setAvgExamScore(float avgExamScore) {
+    public float setAvgExamScore(float avgExamScore) {
         this.avgExamScore = avgExamScore;
-        return this;
+        return avgExamScore;
     }
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "model.Student{" +
                 "fullName='" + fullName + '\'' +
                 ", universityId='" + universityId + '\'' +
                 ", currentCourseNumber=" + currentCourseNumber +
