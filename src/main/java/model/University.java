@@ -1,7 +1,11 @@
 package model;
 
 import enums.StudyProfile;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
+@EqualsAndHashCode
+@Getter
 public class University {
     private String id;
     private String fullName;

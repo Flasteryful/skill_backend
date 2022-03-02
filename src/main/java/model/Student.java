@@ -1,5 +1,12 @@
 package model;
 
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+
+
+@EqualsAndHashCode
+@Getter
 public class Student {
     private String fullName;
     private String universityId;
@@ -44,6 +51,8 @@ public class Student {
         this.avgExamScore = avgExamScore;
         return avgExamScore;
     }
+
+
 
     @Override
     public String toString() {
