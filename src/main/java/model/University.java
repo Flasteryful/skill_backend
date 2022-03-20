@@ -1,5 +1,6 @@
 package model;
 
+import com.google.gson.annotations.SerializedName;
 import enums.StudyProfile;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -7,16 +8,19 @@ import lombok.Getter;
 @EqualsAndHashCode
 @Getter
 public class University {
+    @SerializedName("id")
     private String id;
+    @SerializedName("fullName")
     private String fullName;
+    @SerializedName("shortName")
     private String shortName;
+    @SerializedName("yearOfFoundation")
     private int yearOfFoundation;
+    @SerializedName("mainProfile")
     StudyProfile mainProfile;
 
     public University() {
     }
-
-
 
     public String id() {
         return id;

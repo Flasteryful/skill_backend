@@ -1,6 +1,8 @@
 package model;
 
 
+import com.google.gson.annotations.SerializedName;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -8,9 +10,13 @@ import lombok.Getter;
 @EqualsAndHashCode
 @Getter
 public class Student {
+    @SerializedName("fullName")
     private String fullName;
+    @SerializedName("universityId")
     private String universityId;
+    @SerializedName("currentCourseNumber")
     private int currentCourseNumber;
+    @SerializedName("avgExamScore")
     private float avgExamScore;
 
     public Student() {
@@ -51,7 +57,6 @@ public class Student {
         this.avgExamScore = avgExamScore;
         return avgExamScore;
     }
-
 
 
     @Override
