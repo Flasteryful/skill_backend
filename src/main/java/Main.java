@@ -6,10 +6,14 @@ import comparator.UniversityComparator;
 import enums.StudentComparatorList;
 import enums.StudyProfile;
 import enums.UniversityComparatorList;
+import lombok.*;
+import model.Statistics;
 import model.Student;
 import model.University;
 import service.JsonUtil;
 import service.Reader;
+import service.StatisticsProcessUtil;
+import service.XlsWriter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +25,6 @@ public class Main {
 
         StudentComparator studentComparator = GetComparator.getStudentComparator(StudentComparatorList.STUDENT_AVGEXAMSCORE_COMPARATOR);
         UniversityComparator universityComparator = GetComparator.getUniversityComparator(UniversityComparatorList.UNIVERSITY_FULLNAME_COMPARATOR);
-
-//        Reader.readStudent().stream().sorted(studentComparator).forEach(System.out::println);
-//        Reader.readUniversity().stream().sorted(universityComparator).forEach(System.out::println);
 
         Student student0 = new Student();
         student0.setFullName("Иванов А.С.");
@@ -42,9 +43,10 @@ public class Main {
                 .peek(student -> System.out.println("filter " + JsonUtil.StudentSerialize(student)))
                 .peek(student -> System.out.println("filter " + JsonUtil.StudentDeserialize(JsonUtil.StudentSerialize(student))))
                 .collect(Collectors.toList());
-//        System.out.println(JsonUtil.StudentListSerialize(students));
-//        System.out.println(JsonUtil.StudentListDeserialize(JsonUtil.StudentListSerialize(students)));
 
+
+        XlsWriter xlsWriter = new XlsWriter();
+        xlsWriter.writeStatistics(StatisticsProcessUtil.collectStatistics(Reader.readStudent(),Reader.readUniversity()),"universityInfo.xlsx");
 
     }
 }
