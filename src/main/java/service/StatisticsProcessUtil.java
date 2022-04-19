@@ -1,10 +1,13 @@
 package service;
 
+import comparator.GetComparator;
 import enums.StudyProfile;
 import lombok.*;
 import model.Statistics;
 import model.Student;
 import model.University;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -15,6 +18,7 @@ import java.util.stream.Collectors;
 
 
 public class StatisticsProcessUtil {
+    private static final Logger log = (Logger) LoggerFactory.getLogger(StatisticsProcessUtil.class);
     private StatisticsProcessUtil() {
     }
 
@@ -34,10 +38,12 @@ public class StatisticsProcessUtil {
         Set<Statistics> collectStatistics = new HashSet<>();
         List<StudentCharachter> studentCharachters = new ArrayList<>();
         Set<Statistics> collectStatisticsClean = new HashSet<>();
+        log.info("Trying collect statistics");
 
         getStudentsGroupingByStudyProfile(students, universities, studentCharachters);
+        log.info("Students lists grouped by study profile");
         getUnivecitiesGroupingByStudyProfile(universities, studentCharachters, collectStatistics);
-
+        log.info("Universities lists grouped by study profile");
         collectStatistics.stream()
                 .collect(Collectors.groupingBy(Statistics::getStudyProfile)).values()
                 .forEach(list -> {
@@ -63,7 +69,7 @@ public class StatisticsProcessUtil {
                         collectStatisticsClean.add(list.get(0));
                     }
                 });
-
+        log.info("Statistics returned");
         return collectStatisticsClean;
     }
 

@@ -2,21 +2,31 @@ package model;
 
 
 import com.google.gson.annotations.SerializedName;
-import lombok.Builder;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 
+
 @EqualsAndHashCode
 @Getter
+@XStreamAlias("studentEntry")
 public class Student {
     @SerializedName("fullName")
+    @XStreamAlias("studentName")
     private String fullName;
+
     @SerializedName("universityId")
+    @XStreamAlias("universityId")
     private String universityId;
+
     @SerializedName("currentCourseNumber")
+    @XStreamOmitField
     private int currentCourseNumber;
+
     @SerializedName("avgExamScore")
+    @XStreamAlias("avgScore")
     private float avgExamScore;
 
     public Student() {

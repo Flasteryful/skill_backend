@@ -1,22 +1,34 @@
 package model;
 
 import com.google.gson.annotations.SerializedName;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import enums.StudyProfile;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @EqualsAndHashCode
 @Getter
+@XStreamAlias("universityEntry")
 public class University {
     @SerializedName("id")
+    @XStreamAlias("universityId")
     private String id;
+
     @SerializedName("fullName")
+    @XStreamOmitField
     private String fullName;
+
     @SerializedName("shortName")
+    @XStreamAlias("universityName")
     private String shortName;
+
     @SerializedName("yearOfFoundation")
+    @XStreamOmitField
     private int yearOfFoundation;
+
     @SerializedName("mainProfile")
+    @XStreamAlias("universityProfile")
     StudyProfile mainProfile;
 
     public University() {

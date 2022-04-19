@@ -1,5 +1,7 @@
 package model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import enums.StudyProfile;
 import lombok.*;
 
@@ -13,11 +15,20 @@ import java.util.List;
 @ToString
 @Builder
 @AllArgsConstructor
+@XStreamAlias("statisticsEntry")
 public class Statistics {
+    @XStreamAlias("universityProfile")
     private StudyProfile studyProfile;
+
+    @XStreamAlias("avgScore")
     private BigDecimal avgExamScore;
+
+    @XStreamOmitField
     private long amountStudentOnProfile;
+
+    @XStreamOmitField
     private long amountUniversityOnProfile;
+
+    @XStreamOmitField
     private List<String> univesityNames;
-    public Statistics(){}
 }
